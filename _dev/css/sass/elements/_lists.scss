@@ -1,0 +1,43 @@
+ul, ol {
+	list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: $small-spacing;
+    padding-left: $base-spacing;    
+
+	li {}
+}
+ul {
+	list-style: disc outside;
+	
+	li {}
+}
+ol {
+	list-style: decimal outside;
+	
+	li {}
+}
+
+li > ul,
+li > ol {
+	margin-bottom: 0;
+}
+
+dl {
+  margin-bottom: $small-spacing;
+
+  dt {
+    font-weight: bold;
+    margin-top: $small-spacing;
+  }
+ 
+  dd { 
+  }
+}
+
+/** HR **/
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+}

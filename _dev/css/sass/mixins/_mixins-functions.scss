@@ -1,0 +1,58 @@
+//Mixins - Functions
+/* 
+mixins for border-radius and gradients and stuff like that.
+I am sure this is an actual term for this that I should add later
+*/
+
+/* BORDER BOX */
+// BORDER-BOX ALL THE THINGS! (http://paulirish.com/2012/box-sizing-border-box-ftw/)
+*,
+*:before,
+*:after  { //switched to inherit because of ... https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+	-webkit-box-sizing: inherit; /* Not needed for modern webkit but still used by Blackberry Browser 7.0; see http://caniuse.com/#search=box-sizing */
+	-moz-box-sizing:    inherit; /* Still needed for Firefox 28; see http://caniuse.com/#search=box-sizing */
+	box-sizing:         inherit;
+}
+
+
+
+// CSS3 GRADIENTS
+// .css-gradient(#dfdfdf,#f8f8f8);
+@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
+	background-color: $to;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image: -moz-linear-gradient(top, $from, $to);
+	background-image: -o-linear-gradient(top, $from, $to);
+	background-image: linear-gradient(to bottom, $from, $to);
+}
+
+//BUTTONS
+@mixin button($button-color: #ddd) {
+	border: 1px solid darken($button-color, 13%);
+	border-top-color: darken($button-color, 7%);
+	border-left-color: darken($button-color, 7%);
+	padding: 4px 12px;
+	color: $white;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: 0 1px rgba(0,0,0, .75);
+	cursor: pointer;
+	margin-bottom: 20px;
+	line-height: 21px;
+	border-radius: 4px;
+	@include css-gradient($button-color,darken($button-color, 5%));
+
+	&:hover, &:focus {
+		color: $white;
+	  border: 1px solid darken($button-color, 13%);
+	  border-top-color: darken($button-color, 20%);
+	 	border-left-color: darken($button-color, 20%);
+		@include css-gradient(darken($button-color, 5%),darken($button-color, 10%));
+	}
+	
+	&:active {}	
+	&:visited {}	
+}

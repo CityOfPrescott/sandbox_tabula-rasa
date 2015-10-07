@@ -1,0 +1,122 @@
+/******************************************************************
+Site Name: Tabula Rasa
+Author: Kenny Scott
+Stylesheet: Print Stylesheet
+
+Sources:
+http://www.webdesignerdepot.com/2010/01/10-tips-for-better-print-style-sheets/
+http://www.smashingmagazine.com/2013/03/08/tips-and-tricks-for-print-style-sheets/
+******************************************************************/
+* {
+	background: transparent !important;
+	color: black !important;
+	text-shadow: none !important;
+	filter:none !important;
+	-ms-filter: none !important;
+}
+.site-main,
+article {
+	width: 100%; 
+	margin: 0; 
+	float: none;	
+}
+a, a:visited {
+	font-weight: bolder; 
+	text-decoration: none; 
+	color: #06c;
+
+	// show links on printed pages
+	&[rel="external"]:after {
+		content: " (" attr(href) ")";
+		font-size: 14px;
+		font-weight: normal;
+		color: #06c;
+	}	
+}
+
+.entry-title:after {
+		content: " (" attr(title) ")";
+		font-size: 14px;
+		font-weight: normal;
+		color: #06c;
+}
+
+a:link { 
+	font-weight: bolder; 
+	text-decoration: none; 
+	color: #06c; 
+}
+pre, blockquote {
+	border: 1px solid #999;
+	page-break-inside: avoid;
+}
+
+thead {
+	display: table-header-group;
+}
+
+ul, tr, img {
+	page-break-inside: avoid;
+}
+
+img {
+	max-width: 100% !important;
+}
+
+@page :left{ margin: 0.5cm; }
+@page :right{ margin: 0.8cm; }
+
+p, h2, h3 {
+	orphans: 3;
+	widows: 3;
+}
+p {
+	font-size: 12pt;
+}
+h2,
+h3 {
+	page-break-after: avoid;
+}
+
+//Force comments section to start a new page that way the user can choose not to print them
+.comments-area {
+	page-break-before: always; 
+}
+// hide content people who print don't need to see
+.mobile-menu,
+.search-mobile,
+.sidebar,
+.widget-area,
+.page-navigation,
+.post-navigation,
+.wp-prev-next,
+.respond-form,
+.comment-respond,
+.site-footer,
+nav {
+	display: none;
+}
+
+.site-branding {
+	margin-top: 50px;
+	width: 75%;
+	float: left;
+	
+	.site-title {
+		font-size: 28pt;
+		text-align: left;
+
+	}
+}
+.QRprintonly {
+	display:inline-block !important;
+	width: 25%;
+	float: left;	
+}
+
+@media print and (color) {
+   * {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+   }
+}

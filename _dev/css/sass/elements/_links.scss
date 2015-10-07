@@ -1,0 +1,12 @@
+a { 
+	color: $link-color;
+	
+	&:visited {
+		color: $link-visited;
+	}
+	&:active,
+	:hover,
+	:focus {
+		color: $link-hover;
+	}
+} 

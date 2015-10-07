@@ -1,0 +1,14 @@
+.wp-caption {
+	padding: 4px;
+	max-width: 100%;
+
+	.wp-caption-text {}
+}
+.wp-caption-text,
+.gallery-caption,
+.entry-caption {
+	font-style: italic;
+	font-size: 12px;
+	color: #757575;
+	text-align: center;
+}

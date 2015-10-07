@@ -1,0 +1,55 @@
+/******************************************************************
+Site Name: 
+Author: 
+Stylesheet: Login Stylesheet
+
+This stylesheet only affects the login page not admin or front-end.
+
+For more info, check out the codex:
+http://codex.wordpress.org/Creating_Admin_Themes
+
+******************************************************************/
+/* the form box */
+body.login {
+  /*
+	This is the Wordpress logo in the admin area.
+	You'll have to load your own images and mess
+	with the width and height.
+	*/
+  /*
+	You'll have to override some of the default styles
+	but since we're referencing the id, it should be easy.
+	*/
+  /* login button*/ }
+  body.login h1 a {
+    background: url(../images/login-logo.png) no-repeat top center;
+    /* make sure to replace this! */
+    width: 32.6rem;
+    height: 6.7rem;
+    text-indent: -9999px;
+    overflow: hidden;
+    padding-bottom: 1.5rem;
+    display: block; }
+  body.login form {
+    margin-left: 0.8rem;
+    padding: 2.6rem 2.4rem 4.6rem;
+    font-weight: normal;
+    background: white;
+    border: 1px solid #E5E5E5;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    -khtml-box-shadow: none;
+    box-shadow: none; }
+  body.login form .input {
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+    font-weight: 200;
+    font-size: 2.4rem;
+    width: 97%;
+    padding: 0.3rem;
+    margin-top: 0.2rem;
+    margin-right: 0.6rem;
+    margin-bottom: 1.6rem;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    outline: none;
+    box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.2); }

@@ -1,0 +1,63 @@
+/******************************************************************
+Site Name: 
+Author: 
+Stylesheet: Login Stylesheet
+
+This stylesheet only affects the login page not admin or front-end.
+
+For more info, check out the codex:
+http://codex.wordpress.org/Creating_Admin_Themes
+
+******************************************************************/
+/* the form box */
+body.login {
+  /*
+	This is the Wordpress logo in the admin area.
+	You'll have to load your own images and mess
+	with the width and height.
+	*/
+  /*
+	You'll have to override some of the default styles
+	but since we're referencing the id, it should be easy.
+	*/
+  /* login button*/ }
+  body.login h1 a {
+    background: url(../images/login-logo.png) no-repeat top center;
+    /* make sure to replace this! */
+    width: 32.6rem;
+    height: 6.7rem;
+    text-indent: -9999px;
+    overflow: hidden;
+    padding-bottom: 1.5rem;
+    display: block; }
+  body.login form {
+    margin-left: 0.8rem;
+    padding: 2.6rem 2.4rem 4.6rem;
+    font-weight: normal;
+    background: white;
+    border: 1px solid #E5E5E5;
+    -webkit-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    -khtml-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none; }
+  body.login form .input {
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+    font-weight: 200;
+    font-size: 2.4rem;
+    width: 97%;
+    padding: 0.3rem;
+    margin-top: 0.2rem;
+    margin-right: 0.6rem;
+    margin-bottom: 1.6rem;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    outline: none;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.2);
+    -moz-box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.2);
+    box-shadow: inset 1px 1px 2px rgba(200, 200, 200, 0.2); }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImxvZ2luLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7bUVBVW1FO0FBRXpELGtCQUFrQjtBQUV4QixJQUFJLE1BQU0sQ0FBSDtFQUNWOzs7O0dBSUU7RUE0Q0Y7OztHQUdFO0VBQ1ksaUJBQWlCLEVBckRwQjtFQU1SLElBQUksTUFBTSxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQWI7SUFDSixVQUFVLEVBQUUsNkJBQUcsQ0FBMkIsU0FBUyxDQUFDLEdBQUcsQ0FBQyxNQUFNO0lBQUUsZ0NBQWdDO0lBQ2hHLEtBQUssRUFBRSxLQUFNO0lBQ2IsTUFBTSxFQUFFLElBQUs7SUFDYixXQUFXLEVBQUUsT0FBUTtJQUNyQixRQUFRLEVBQUUsTUFBTztJQUNqQixjQUFjLEVBQUUsSUFBSztJQUNyQixPQUFPLEVBQUUsS0FBTSxHQVBWO0VBVU4sSUFBSSxNQUFNLENBQUMsSUFBSSxDQUFWO0lBQ0osV0FBVyxFQUFFLEdBQUk7SUFDakIsT0FBTyxFQUFFLElBQUksQ0FBQyxJQUFJLENBQUMsSUFBSTtJQUN2QixXQUFXLEVBQUUsTUFBTztJQUNwQixVQUFVLEVBQUUsS0FBTTtJQUNsQixNQUFNLEVBQUUsaUJBQWtCO0lBQzFCLHFCQUFxQixFQUFFLEdBQUk7SUFDMUIsb0JBQW9CLEVBQUUsR0FBSTtJQUN4QixrQkFBa0IsRUFBRSxHQUFJO0lBQ3pCLGFBQWEsRUFBRSxHQUFJO0lBQ3JCLGtCQUFrQixFQUFFLElBQUs7SUFDeEIsaUJBQWlCLEVBQUUsSUFBSztJQUN0QixlQUFlLEVBQUUsSUFBSztJQUN2QixVQUFVLEVBQUUsSUFBSyxHQWJkO0VBZ0JELElBQUksTUFBTSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQWY7SUFDWCxXQUFXLEVBQUUsd0VBQXlFO0lBQ3RGLFdBQVcsRUFBRSxHQUFJO0lBQ2pCLFNBQVMsRUFBRSxJQUFLO0lBQ2hCLEtBQUssRUFBRSxHQUFJO0lBQ1gsT0FBTyxFQUFFLEdBQUk7SUFDYixVQUFVLEVBQUUsR0FBSTtJQUNoQixZQUFZLEVBQUUsR0FBSTtJQUNsQixhQUFhLEVBQUUsSUFBSztJQUNwQixNQUFNLEVBQUUsaUJBQWtCO0lBQzFCLFVBQVUsRUFBRSxPQUFRO0lBQ3BCLE9BQU8sRUFBRSxJQUFLO0lBQ2Qsa0JBQWtCLEVBQUUsS0FBSyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLHdCQUFJO0lBQ3ZDLGVBQWUsRUFBRSxLQUFLLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyxHQUFHLENBQUMsd0JBQUk7SUFDekMsVUFBVSxFQUFFLEtBQUssQ0FBQyxHQUFHLENBQUMsR0FBRyxDQUFDLEdBQUcsQ0FBQyx3QkFBSSxHQWR2QiIsImZpbGUiOiJsb2dpbi5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqXHJcblNpdGUgTmFtZTogXHJcbkF1dGhvcjogXHJcblN0eWxlc2hlZXQ6IExvZ2luIFN0eWxlc2hlZXRcclxuXHJcblRoaXMgc3R5bGVzaGVldCBvbmx5IGFmZmVjdHMgdGhlIGxvZ2luIHBhZ2Ugbm90IGFkbWluIG9yIGZyb250LWVuZC5cclxuXHJcbkZvciBtb3JlIGluZm8sIGNoZWNrIG91dCB0aGUgY29kZXg6XHJcbmh0dHA6Ly9jb2RleC53b3JkcHJlc3Mub3JnL0NyZWF0aW5nX0FkbWluX1RoZW1lc1xyXG5cclxuKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqKioqL1xyXG5cclxuI2xvZ2luIHt9IC8qIHRoZSBmb3JtIGJveCAqL1xyXG5cclxuYm9keS5sb2dpbiB7XHJcblx0LypcclxuXHRUaGlzIGlzIHRoZSBXb3JkcHJlc3MgbG9nbyBpbiB0aGUgYWRtaW4gYXJlYS5cclxuXHRZb3UnbGwgaGF2ZSB0byBsb2FkIHlvdXIgb3duIGltYWdlcyBhbmQgbWVzc1xyXG5cdHdpdGggdGhlIHdpZHRoIGFuZCBoZWlnaHQuXHJcblx0Ki9cclxuXHRoMSBhIHtcclxuXHRcdGJhY2tncm91bmQ6IHVybCguLi9pbWFnZXMvbG9naW4tbG9nby5wbmcpIG5vLXJlcGVhdCB0b3AgY2VudGVyOyAvKiBtYWtlIHN1cmUgdG8gcmVwbGFjZSB0aGlzISAqL1xyXG5cdFx0d2lkdGg6IDMyNnB4O1xyXG5cdFx0aGVpZ2h0OiA2N3B4O1xyXG5cdFx0dGV4dC1pbmRlbnQ6IC05OTk5cHg7XHJcblx0XHRvdmVyZmxvdzogaGlkZGVuO1xyXG5cdFx0cGFkZGluZy1ib3R0b206IDE1cHg7XHJcblx0XHRkaXNwbGF5OiBibG9jaztcclxuXHR9XHJcblx0XHJcblx0Zm9ybSB7XHJcblx0XHRtYXJnaW4tbGVmdDogOHB4O1xyXG5cdFx0cGFkZGluZzogMjZweCAyNHB4IDQ2cHg7XHJcblx0XHRmb250LXdlaWdodDogbm9ybWFsO1xyXG5cdFx0YmFja2dyb3VuZDogd2hpdGU7XHJcblx0XHRib3JkZXI6IDFweCBzb2xpZCAjRTVFNUU1O1xyXG5cdFx0LXdlYmtpdC1ib3JkZXItcmFkaXVzOiAzcHg7XHJcblx0XHQgLWtodG1sLWJvcmRlci1yYWRpdXM6IDNweDtcclxuXHRcdCAgIC1tb3otYm9yZGVyLXJhZGl1czogM3B4O1xyXG5cdFx0XHRcdGJvcmRlci1yYWRpdXM6IDNweDtcclxuXHRcdC13ZWJraXQtYm94LXNoYWRvdzogbm9uZTtcclxuXHRcdCAta2h0bWwtYm94LXNoYWRvdzogbm9uZTtcclxuXHRcdCAgIC1tb3otYm94LXNoYWRvdzogbm9uZTtcclxuXHRcdFx0XHRib3gtc2hhZG93OiBub25lO1xyXG5cdH1cclxuXHRcclxuXHRmb3JtIC5pbnB1dCB7XHJcblx0XHRmb250LWZhbWlseTogXCJIZWx2ZXRpY2FOZXVlLUxpZ2h0XCIsXCJIZWx2ZXRpY2EgTmV1ZSBMaWdodFwiLFwiSGVsdmV0aWNhIE5ldWVcIixzYW5zLXNlcmlmO1xyXG5cdFx0Zm9udC13ZWlnaHQ6IDIwMDtcclxuXHRcdGZvbnQtc2l6ZTogMjRweDtcclxuXHRcdHdpZHRoOiA5NyU7XHJcblx0XHRwYWRkaW5nOiAzcHg7XHJcblx0XHRtYXJnaW4tdG9wOiAycHg7XHJcblx0XHRtYXJnaW4tcmlnaHQ6IDZweDtcclxuXHRcdG1hcmdpbi1ib3R0b206IDE2cHg7XHJcblx0XHRib3JkZXI6IDFweCBzb2xpZCAjRTVFNUU1O1xyXG5cdFx0YmFja2dyb3VuZDogI0ZCRkJGQjtcclxuXHRcdG91dGxpbmU6IG5vbmU7XHJcblx0XHQtd2Via2l0LWJveC1zaGFkb3c6IGluc2V0IDFweCAxcHggMnB4IHJnYmEoMjAwLDIwMCwyMDAsMC4yKTtcclxuXHRcdCAgIC1tb3otYm94LXNoYWRvdzogaW5zZXQgMXB4IDFweCAycHggcmdiYSgyMDAsMjAwLDIwMCwwLjIpO1xyXG5cdFx0XHRib3gtc2hhZG93OiBpbnNldCAxcHggMXB4IDJweCByZ2JhKDIwMCwyMDAsMjAwLDAuMik7XHJcblx0fVxyXG5cdFxyXG5cdC8qXHJcblx0WW91J2xsIGhhdmUgdG8gb3ZlcnJpZGUgc29tZSBvZiB0aGUgZGVmYXVsdCBzdHlsZXNcclxuXHRidXQgc2luY2Ugd2UncmUgcmVmZXJlbmNpbmcgdGhlIGlkLCBpdCBzaG91bGQgYmUgZWFzeS5cclxuXHQqL1xyXG5cdCN3cC1zdWJtaXQge30gLyogbG9naW4gYnV0dG9uKi9cclxufSAiXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */

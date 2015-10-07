@@ -1,0 +1,47 @@
+.button,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+article.post-password-required input[type=submit] {
+    background-color: $button-color;
+	border: 1px solid darken($button-color, 13%);
+	border-top-color: darken($button-color, 7%);
+	border-left-color: darken($button-color, 7%);
+	padding: 0.75em 1em;
+	color: $button-text;
+    display: inline-block;
+	@include content-text();
+	font-weight: bold;
+	text-decoration: none;
+	text-shadow: 0 1px rgba(0,0,0, .75);
+	cursor: pointer;
+	border-radius: $border-radius;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;    
+	@include css-gradient($button-color,darken($button-color, 5%));
+
+	&:hover, &:focus {
+        color: $button-text;;
+        border: 1px solid darken($button-color, 13%);
+        border-top-color: darken($button-color, 20%);
+        border-left-color: darken($button-color, 20%);
+        @include css-gradient(darken($button-color, 5%),darken($button-color, 10%));
+	}
+	
+	&:active {}	
+	&:visited {}	
+}
+
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+	cursor: pointer;
+}
+
+button[disabled],
+input[disabled] {
+    cursor: default;
+}

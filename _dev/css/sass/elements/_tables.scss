@@ -1,0 +1,34 @@
+table {
+  border-collapse: collapse;
+  font-feature-settings: "kern", "liga", "tnum";
+  margin: $small-spacing 0;
+  table-layout: fixed;
+  width: 100%;
+	
+	caption {
+		@include secondary-text();
+		font-weight: normal;
+		text-align: left;			
+	}
+	tr {	
+		th {
+			@include secondary-text();
+			font-weight: bold;
+            border-bottom: 1px solid shade($tert-color, 25%);
+            padding: $small-spacing 0;
+            text-align: left;
+		}
+		td {
+            @include secondary-text();
+            border-bottom: $tert-color;
+            padding: $small-spacing 0;
+		}
+		.even {}
+		.odd{}
+	}
+}
+tr,
+td,
+th {
+  vertical-align: middle;
+}

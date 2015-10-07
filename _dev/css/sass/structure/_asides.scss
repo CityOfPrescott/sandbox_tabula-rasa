@@ -1,0 +1,34 @@
+/* -------------------------------------------------------------
+#secondary .widget-area
+	aside .widget
+-------------------------------------------------------------- */
+.widget-area {	
+	.widget {
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		hyphens: auto;
+		word-wrap: break-word;
+		
+		.widget-title {}
+		
+		a {
+			color: $link-color;
+		}
+		p {}
+		ul {
+			list-style: none;
+			
+			li {			
+				&:first-child {}
+				&:last-child {}
+				a {}
+				
+				/* deep nesting */
+				ul {}
+			}
+		} 
+	}
+	#s {
+	width: 53.66666666666%; /* define a width to avoid dropping a wider submit button */
+	}
+}

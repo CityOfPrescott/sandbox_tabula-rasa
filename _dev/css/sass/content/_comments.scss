@@ -1,0 +1,118 @@
+/* -------------------------------------------------------------
+#comments .comment-area
+	.comments-title
+	ol.comment-list
+		li.comment
+	#respond .comment-respond
+		#reply-title .comment-reply-title
+		form#commentform .comment-form
+			.logged-in-as 
+			.comment-form-comment
+			.form-allowed-tags
+			.form-submit
+-------------------------------------------------------------- */
+.comments-area {
+	clear: both;
+	
+	.comments-title {
+		font-size: 16px;
+		
+		span {}
+	}
+	/** Comments List **/
+	.comment-list {
+		margin: 0;
+		padding: 0;
+		
+		li.comment {
+			position: relative;
+			clear: both;
+			overflow: hidden;
+			list-style-type: none;	
+
+			&:last-child {
+				margin-bottom: 0;
+			}	
+			.comment-body {
+				padding: 5px;
+				
+				.comment-meta {
+					.comment-author {
+						.avatar {}
+					}
+					.comment-metadata {
+						a {
+							time {}
+						}
+					}
+				}
+				.comment-content {
+					p {}
+				}
+				.reply {
+					.comment-reply-link {}
+				}
+			}				
+			.children {
+				li.comment {
+					.comment-body {
+						.comment-meta {
+							.comment-author {}
+						}
+						.comment-content {
+							p {}
+						}
+						.reply {
+							.comment-reply-link {}
+						}
+					}				
+				}
+			}		
+		}
+	}
+	.odd {
+		background: $grey;
+	}
+	.even {
+		background: $white;
+	}
+	/** Comments Response Area **/
+	.comment-respond {
+		.comment-reply-title {}
+		.comment-form {
+			.logged-in-as {}
+			.comment-form-comment {
+				input,
+				textarea {
+					width: 100%;
+					
+					&:focus {
+						background: $white;
+					}
+					
+					/* form validation */
+					&:invalid {
+						outline: none;
+						border-color: $black;
+						background-color: $grey;
+						-webkit-box-shadow: none;
+						-moz-box-shadow: none;
+						-ms-box-shadow: none;
+						box-shadow: none;
+					}
+				}
+			}
+			.form-allowed-tags {
+				abbr {}
+				code {}
+			}
+			.form-submit {
+				input[type=submit] {}
+			}
+			.required {
+				color: red;
+			}	
+			.nocomments {}			
+		}
+	}
+}

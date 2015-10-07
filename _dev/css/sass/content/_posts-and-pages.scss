@@ -1,0 +1,44 @@
+/* -------------------------------------------------------------
+#primary .content-area
+	main#main .site-main
+		article .post
+			.entry-header 
+			.entry-content
+			.entry-footer
+		.post-navigation	
+-------------------------------------------------------------- */
+.content-area {
+    padding: 10px;
+	.site-main {
+		article {}
+	}
+}
+.entry-header {
+	.entry-title {
+		//margin-bottom: 0;
+	}
+	.entry-meta {
+		font-size: 14px;
+		display: inline-block;
+		
+		.posted-on {
+			time {}
+		}
+		.byline {
+			.author {
+				a {}
+			}
+		}
+	}
+	.cat-links {
+		font-size: 14px;
+	}	
+}
+.entry-content {
+	p {}
+	img {}
+	a {}
+}
+.entry-footer {
+	a {}
+}

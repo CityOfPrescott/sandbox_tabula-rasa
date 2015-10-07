@@ -1,0 +1,18 @@
+/* -------------------------------------------------------------
+footer#colophon .site-footer
+	.inner-footer
+-------------------------------------------------------------- */
+.site-footer {
+	clear: both;
+	
+	.inner-footer {}
+	.entry-meta {	}
+	a {}	
+	ul {
+		li {
+			a {}
+			&:first-child {}
+			&:last-child {}
+		}
+	}
+}

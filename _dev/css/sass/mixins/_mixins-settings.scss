@@ -1,0 +1,94 @@
+// Mixins - Settings
+/* 
+Sets up the main variables for the site.
+Colors, text, and fonts
+*/
+
+// Font Sizes
+$base-font-size: 62.5%;
+
+// TYPOGRAPHY
+$sans-serif:        "Open Sans", Helvetica, Arial, sans-serif;
+$serif:             "PT Serif", Georgia, Cambria, Times New Roman, Times, serif; 
+$body-font:			$sans-serif;
+$heading-font:	    "Open Sans Condensed", Helvetica, Arial, sans-serif;
+$font__code: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", Courier, monospace;
+
+// Line height
+$base-line-height: 1.5;
+$heading-line-height: 1.2;
+
+// Other Sizes
+$border-radius: 3px;
+$base-spacing: $base-line-height * 1em;
+$small-spacing: $base-spacing / 2;
+$base-z-index: 0;
+$base-border: 1px;
+
+// COLORS
+$prim-color:      	#6688AA; //
+$sec-color:         #810000; //green
+$tert-color:      	#0000FF; //blue
+
+$black:             #444;
+$grey:				#757575;
+$white:             #fff; 
+ 
+$color__text:				$black;
+    
+$link-color:         #810000; 
+$link-hover:         darken($link-color, 9%);
+$link-visited:        $link-color;
+ 
+$button-color:     	$sec-color; //cyan
+$button-text:     	$white; //cyan
+
+$color__background-hr: #ccc;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+$color__border-abbr: #666;
+
+$mobile__header-color: $white;
+$mobile__header-bground: darken($prim-color, 10%);
+$mobile__menu-color: $white;
+$mobile__menu-bground: darken($prim-color, 10%);
+
+//Grid
+$max-width:		    1200px; 
+$article-width:		800;
+
+@mixin wrap {
+	max-width: $max-width; 
+	margin: 0 auto 0; 
+}  
+
+// Creates a grid of a 102%. 
+//Then strips off the last 2% gutter for a total of 100%
+$column-width: 6.5%;
+$gutter-width: 2%;
+$columns: 12;
+
+// Set $total-width to 102% for a fluid layout
+$total-width: 102%;
+
+//Other ratios 
+$phi:               1.618;
+$double-octave:     4;
+$major-twelfth:     3;
+$major-eleventh:    2.667;
+$major-tenth:       2.5;
+$octave:            2;
+$major-seventh:     1.875;
+$minor-seventh:     1.778;
+$major-sixth:       1.667;
+$minor-sixth:       1.6;
+$fifth:             1.5;
+$augmented-fourth:  1.414;
+$fourth:            1.333;
+$major-third:       1.25;
+$minor-third:       1.2;
+$major-second:      1.125;
+$minor-second:      1.067;
+
+$ratio: $phi;

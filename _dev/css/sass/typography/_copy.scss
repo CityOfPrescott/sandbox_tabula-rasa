@@ -1,0 +1,52 @@
+// proper formatting (http://blog.fontdeck.com/post/9037028497/hyphens) 
+p {
+	-webkit-hyphens: auto;
+	-epub-hyphens:   auto;
+	-moz-hyphens:    auto;
+  hyphens:         auto;
+}
+p{
+    @include content-text();
+    margin: 0 0 $small-spacing;
+}
+dfn, cite, em, i {
+	font-style: italic;
+}
+blockquote {
+	margin: 0 1.5em;	
+}
+code, kbd, tt, var {
+	font-family: $font__code;
+	@include secondary-text();
+}
+del { 
+	color: $black;
+} 
+pre { 
+	background: $color__background-pre;
+	font-family: $font__pre;
+	@include secondary-text();
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+
+	code { 
+		display: block;  
+	}
+} 
+address {
+    margin: 0 0 1.5em;
+}	
+mark, ins {
+	background: $color__background-ins;
+	text-decoration: none;
+}	
+abbr,
+dfn,
+acronym {
+	border-bottom: 1px dotted $color__border-abbr;
+	cursor: help;
+}
+big {
+	font-size: 125%;
+}

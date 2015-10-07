@@ -1,0 +1,69 @@
+/** Site Header
+-------------------------------------------------------------- 
+header#masthead .site-header
+	.inner-header
+		.site-branding
+			h1.site-title
+			h2.site-description
+		nav#site-navigation .main-navigation	
+			.menu
+				.nav-menu
+					li 
+						.children
+-------------------------------------------------------------- */
+.site-header {
+	background: $mobile__header-bground;
+	min-height: 35px;
+	border-bottom: 1px solid $mobile__menu-color;
+    height: auto;
+}
+.QRprintonly {
+	display:none;
+}
+.site-branding {
+	width: 80%;
+	display: inline;
+	float: left;
+	
+	.site-title {
+		margin: 0;
+		text-align: center;
+		line-height: 1;
+	}
+	.site-description {	
+		display: none;
+	} 
+	a {
+		text-decoration: none;
+		color: $mobile__header-color; 
+	}	
+}
+
+/** Breakpoint - 600 **/
+@media only screen and (min-width: 600px) {
+	.site-header {
+		margin-top: 20px;
+        background: 0;
+        border: 0;
+        padding: 0;
+	}	
+	.site-branding {
+		background: url(../images/buffy-banner.png) no-repeat;
+		height: 150px;
+		width: 100%;
+		color: $white;
+        background-size: cover;    
+        display: block;
+        float: none;
+			
+		.site-title {
+			text-align: left;
+		}
+		.site-description {	
+			display: block;
+		}
+		a {
+			color: $white;
+		}	
+	}
+}

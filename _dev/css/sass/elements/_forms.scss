@@ -1,0 +1,105 @@
+fieldset {
+  background-color: $sec-color;
+  border: $base-border;
+  margin: 0 0 $small-spacing;
+  padding: $base-spacing;
+}
+input,
+label,
+select,
+textarea {
+    display: block;
+	border-radius: $border-radius;
+	font-family: inherit;
+	padding: $base-spacing;
+}
+input {
+    line-height: normal;
+}
+label {
+  font-weight: 600;
+  margin-bottom: $small-spacing / 2;
+    padding: 0;
+
+  &.required::after {
+    content: "*";
+  }
+
+  abbr {
+    display: none;
+  }
+}
+
+select {
+  margin-bottom: $base-spacing;
+  max-width: 100%;
+  width: auto;
+}
+
+textarea {
+	font-size: 100%;
+	overflow: auto;
+	vertical-align: top;
+	width: 100%;    
+    resize: vertical;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+select[multiple=multiple],
+textarea {
+  background-color: $sec-color;
+  border: $base-border;
+  margin-bottom: $small-spacing;
+  padding: $base-spacing / 3;
+  width: 100%;
+
+  &:hover {
+    border-color: shade($tert-color, 20%);
+  }
+
+  &:focus {
+    border-color: $link-hover;
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: shade($grey, 5%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: $base-border;
+    }
+  }
+}
+
+/** Reset non-text input types **/
+input[type="checkbox"],
+input[type="radio"],
+input[type="file"],
+input[type="hidden"],
+input[type="image"],
+input[type="color"] {
+	border: 0;
+	border-radius: 0;
+	padding: 0;
+}
+
+input[type="search"] {
+  appearance: none;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin-right: $small-spacing / 2;
+}
+
+input[type="file"] {
+  margin-bottom: $small-spacing;
+  width: 100%;
+}
+

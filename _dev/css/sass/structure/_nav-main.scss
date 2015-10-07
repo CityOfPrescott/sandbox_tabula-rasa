@@ -1,0 +1,123 @@
+.main-navigation {
+	clear: both;
+	display: block;
+}
+.nav-menu {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;	
+	width: 100%;
+	display: inline-block;
+	
+	li {
+		float: left;
+		position: relative;
+		display: inline-block;
+		
+		a {
+			display: block;
+			text-decoration: none;	
+			padding: 10px;
+		}
+		&:first-child {}
+		&:last-child {}
+		
+		.sub-menu,
+		.children {
+			position: absolute;
+			left: 0;
+			z-index: 99999;
+			display: none;
+			float: left;
+			padding: 0;
+			background: $grey;
+			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);	
+			border-top: 2px solid $grey;		
+			
+			li {
+					
+				a {
+					width: 200px;
+					
+					&:hover,
+					&:focus {
+						background: darken($grey, 10%);
+					}
+					&:link {}
+				}
+				&:first-child {}
+				&:last-child {}
+				
+				ul {
+					left: 100%;
+					top: 0;
+				}
+				&:hover > ul {
+					left: 100%;
+					top: 0;
+					border: none;
+				}
+				&:hover > a {
+					font-weight: normal;
+				}				
+			}
+		}
+		&:hover > ul,
+		&:active > ul,
+		&:focus > ul {
+			display: block;
+			left: auto;
+			top: auto;
+		}
+		&:hover > a {
+			background: darken($grey, 10%);
+			color: $white;
+		}
+	} /* end .nav-menu li */
+	
+	/* highlight current page */
+	li.current-menu-item,
+	li.current_page_item,
+	li.current_page_ancestor {
+		& > a {
+			font-weight: bold;
+		}
+	}  
+	ul .current_page_parent,
+	.current_page_parent .current_page_item > a {
+		//background: $grey;
+	}
+	/* end current highlighters */			
+} /* end .nav-menu ul */
+
+/** Breakpoint - 600 **/
+@media only screen and (min-width: 600px) {
+	.main-navigation {
+		margin-top: 20px;
+		width: 100%;
+		border-top: 2px solid $grey;
+		border-bottom: 2px solid $grey;	
+        position: static;
+		display: block;
+        height: 47px;
+        
+		.mmenu-toggle {
+			//height: 44px;
+			//display: inline;
+		}
+		.nav-menu {
+			display: inline-block;
+			float: left;
+			width: auto;
+			
+			a {
+				color: $white;
+			}			
+		}
+		.search-not-mobile {
+			display: inline-block;
+			float: right;
+			padding-top: 5px;
+		}
+	}
+}

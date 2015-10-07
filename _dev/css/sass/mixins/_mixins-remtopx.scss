@@ -1,0 +1,416 @@
+/* 
+mixins to auto add rem values when adding px values
+*/
+
+// REM UNIT MIXINS
+//https://github.com/christopher-ramirez/remixings
+
+@base-font-size-px: 10; // root's font size. @base-font-size-px MUST ME AN INTEGER.
+
+@pxtorem-js-function: ~`pxtorem = function(px){ if (typeof rmxsBaseFontSize == 'undefined') rmxsBaseFontSize = @{base-font-size-px}; return (parseInt(px.replace(/(^\d+)(.+$)/i,'$1')) / rmxsBaseFontSize + 'rem') }`;
+
+// ===== FONT MIXINS =====
+.font-size(@value) {
+	& when ( @ie ) {
+    font-size: @value;
+		line-height: @value * 1.5;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			@line: (@value * 1.5);
+			@line-rem-value: ~`pxtorem('@{line}')`;
+			font-size: @rem-value;    
+			line-height: @line-rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			font-size: @value; 
+			line-height: @value * 1.5;	
+		}			
+	}	
+}
+
+.line-height(@value) {
+	& when ( @ie ) {
+		line-height: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			line-height: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			line-height: @value;			
+		}			
+	}	
+}
+
+.text-indent(@value) {
+	& when ( @ie ) {
+		text-indent: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			text-indent: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			text-indent: @value;			
+		}			
+	}	
+}
+
+// ===== MARGIN MIXINS =====
+.margin(@value) {
+	& when ( @ie ) {
+		margin: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			margin: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			margin: @value;			
+		}			
+	}	
+}
+
+.margin(@vertical, @horizontal) {
+	& when ( @ie ) {
+    margin: @arguments;
+	}	
+	& when not( @ie ) {
+		& when (ispixel(@vertical)) and (ispixel(@horizontal)) {
+			@rem-vvalue: ~`pxtorem('@{vertical}')`;
+			@rem-hvalue: ~`pxtorem('@{horizontal}')`;
+			margin: @rem-vvalue @rem-hvalue;
+		}	
+		& when (ispixel(@vertical)) {
+			@rem-value: ~`pxtorem('@{vertical}')`;
+			.margin(@rem-value, @horizontal);
+		}
+		& when (ispixel(@horizontal)) {
+			@rem-value: ~`pxtorem('@{horizontal}')`;
+			.margin(@vertical, @rem-value);
+		}
+		& when not (ispixel(@vertical)) and not (ispixel(@horizontal)) {
+			margin: @arguments;			
+		}			
+	}		
+}
+
+
+.margin-top(@value) {
+	& when ( @ie ) {
+		margin-top: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			margin-top: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			margin-top: @value;			
+		}			
+	}	
+}
+
+.margin-left(@value) {
+	& when ( @ie ) {
+		margin-left: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			margin-left: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			margin-left: @value;			
+		}			
+	}	
+}
+
+.margin-right(@value) {
+	& when ( @ie ) {
+		margin-right: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			margin-right: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			margin-right: @value;			
+		}			
+	}	
+}
+
+.margin-bottom(@value) {
+	& when ( @ie ) {
+		margin-bottom: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			margin-bottom: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			margin-bottom: @value;			
+		}			
+	}	
+}
+
+
+// ===== PADDING MIXINS =====
+.padding(@value) {
+	& when ( @ie ) {
+		padding: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			padding: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			padding: @value;			
+		}			
+	}	
+}
+
+.padding(@vertical, @horizontal) {
+	& when ( @ie ) {
+    padding: @arguments;
+	}	
+	& when not( @ie ) {
+		& when (ispixel(@vertical)) and (ispixel(@horizontal)) {
+			@rem-vvalue: ~`pxtorem('@{vertical}')`;
+			@rem-hvalue: ~`pxtorem('@{horizontal}')`;
+			padding: @rem-vvalue @rem-hvalue;
+		}	
+		& when (ispixel(@vertical)) {
+			@rem-value: ~`pxtorem('@{vertical}')`;
+			.padding(@rem-value, @horizontal);
+		}
+		& when (ispixel(@horizontal)) {
+			@rem-value: ~`pxtorem('@{horizontal}')`;
+			.padding(@vertical, @rem-value);
+		}
+		& when not (ispixel(@vertical)) and not (ispixel(@horizontal)) {
+			padding: @arguments;			
+		}			
+	}		
+}
+
+.padding-top(@value) {
+	& when ( @ie ) {
+		padding-top: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			padding-top: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			padding-top: @value;			
+		}			
+	}	
+}
+
+.padding-left(@value) {
+	& when ( @ie ) {
+		padding-left: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			padding-left: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			padding-left: @value;			
+		}			
+	}	
+}
+
+.padding-right(@value) {
+	& when ( @ie ) {
+		padding-right: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			padding-right: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			padding-right: @value;			
+		}			
+	}	
+}
+
+.padding-bottom(@value) {
+	& when ( @ie ) {
+		padding-bottom: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			padding-bottom: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			padding-bottom: @value;			
+		}			
+	}	
+}
+
+
+// ===== POSITION MIXINS =====
+.height(@value) {
+	& when ( @ie ) {
+		height: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			height: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			height: @value;			
+		}			
+	}	
+}
+
+.min-height(@value) {
+	& when ( @ie ) {
+		min-height: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			min-height: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			min-height: @value;			
+		}			
+	}	
+}
+
+.max-height(@value) {
+	& when ( @ie ) {
+		max-height: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			max-height: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			max-height: @value;			
+		}			
+	}	
+}
+
+
+.width(@value) {
+	& when ( @ie ) {
+		width: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			width: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			width: @value;			
+		}			
+	}	
+}
+
+.min-width(@value) {
+	& when ( @ie ) {
+		min-width: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			min-width: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			min-width: @value;			
+		}			
+	}	
+}
+
+.max-width(@value) {
+	& when ( @ie ) {
+		max-width: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			max-width: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			max-width: @value;			
+		}			
+	}	
+}
+
+.top(@value) {
+	& when ( @ie ) {
+		top: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			top: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			top: @value;			
+		}			
+	}	
+}
+
+.left(@value) {
+	& when ( @ie ) {
+		left: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			left: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			left: @value;			
+		}			
+	}	
+}
+
+.right(@value) {
+	& when ( @ie ) {
+		right: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			right: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			right: @value;			
+		}			
+	}	
+}
+
+.bottom(@value) {
+	& when ( @ie ) {
+		bottom: @value;	
+	}
+	& when not( @ie ) {
+		& when (ispixel(@value)) {
+			@rem-value: ~`pxtorem('@{value}')`;
+			bottom: @rem-value;
+		}	
+		& when not (ispixel(@value)) {
+			bottom: @value;			
+		}			
+	}	
+}

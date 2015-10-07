@@ -1,0 +1,104 @@
+//FONT
+//LESS CSS mixins for a golden ratio typography rhythm based on Chris Pearson formulas http://www.pearsonified.com/2011/12/golden-ratio-typography.php
+//http://washmatique.fr/blog/2014/04/05/golden-ratio-typography-less-css-mixins.html
+	
+@import "node_modules/mathsass/dist/math";
+
+/** required: value in pixel with no units ***/
+$line-width: $article-width;
+
+$xoo: 1 / (2 * $ratio);
+$primary-font-size: round(sqrt($line-width) / $ratio);
+
+/**
+http://meyerweb.com/eric/thoughts/2006/02/08/unitless-line-heights/
+**/
+
+@mixin line-height($font-size,$line-width){
+	$x1:sqrt($line-width) / $ratio;
+	$x2:$font-size * ($ratio - $xoo * (1 - ($line-width / pow($font-size * $ratio, 2))));
+	line-height:$x2/$x1;
+}
+ 
+@mixin golden-text($font-size, $base-font-size) {
+	font-size: 0px + $font-size;
+	//font-size: 0rem + $font-size/$base-font-size;
+	font-size: 0rem + $font-size*.10;
+	$current-font-size:$font-size;
+	@include line-height($current-font-size,$line-width);
+}
+ 
+ 
+$mag0: $primary-font-size;
+$mag1: round($primary-font-size * sqrt($ratio));
+$mag2: round($primary-font-size*$ratio);
+$mag3: round($primary-font-size*pow($ratio, 2));
+$mag-1: round($primary-font-size/ sqrt($ratio));
+
+@mixin content-text() {
+	@include golden-text($mag0,$primary-font-size);
+}
+ 
+ 
+@mixin title() {
+	//$current-font-size: round($primary-font-size*pow($ratio, 2));
+	@include golden-text($mag3, $primary-font-size);	 
+}
+ 
+ 
+ @mixin headline() {
+	 //$current-font-size: round($primary-font-size*$ratio);
+	@include golden-text($mag2, $primary-font-size);
+ 
+}
+  
+ 
+ @mixin sub-headline() {
+	 //$current-font-size: round($primary-font-size * sqrt($ratio));
+	@include golden-text($mag1, $primary-font-size);
+}
+ 
+ 
+ 
+ @mixin secondary-text() {
+	 //$current-font-size:round($primary-font-size/ sqrt($ratio));
+	@include golden-text($mag-1, $primary-font-size);
+}
+
+@mixin custom-ratio( $content-width, $ratio, $mag ) {
+	$primary-font-size: round(sqrt($content-width) / $ratio);
+	@include golden-text($mag,$primary-font-size);
+}
+
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	font-family: $heading-font;
+	text-rendering: optimizelegibility;
+	clear: both;
+    margin: 0 0 $small-spacing;
+    
+	a {
+		text-decoration: none;
+	}
+} 
+
+h1.entry-title{
+    @include title();
+    line-height: 1;
+     margin: $small-spacing 0 $small-spacing; 
+    
+}
+
+h1 {
+    @include headline();
+}
+h2 {
+    @include sub-headline();
+}
+h3 {
+    @include content-text();
+
+}
+h4 {
+    @include secondary-text();
+}

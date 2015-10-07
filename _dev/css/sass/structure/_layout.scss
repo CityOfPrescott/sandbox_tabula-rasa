@@ -1,0 +1,94 @@
+html{
+	font-size: $base-font-size;
+	overflow-y: scroll; /* Keeps page centered in all browsers regardless of content height */
+    box-sizing: border-box;
+}
+body {
+	background: $prim-color; /* Fallback for when there is no custom background color defined. */
+    @include content-text(); // Pulled from typography/_headings.scss
+	font-family: $sans-serif;
+	text-rendering: optimizeLegibility;
+	//color: $color__text;
+    
+}
+
+/* Page Structure
+-------------------------------------------------------------- 
+body
+	#page .site
+		> header#masthead .site-header
+		+ #content .site-content
+			>#primary .content-area
+				>main#main .site-main
+					>article
+			+#secondary .widget-area .aside1
+			+.widget-area .aside2
+		+footer#colophon .site-footer
+-------------------------------------------------------------- */
+.site {}
+.site-header {
+	padding: 0 10px;
+}
+.site-content {
+	clear: both;
+	overflow: hidden;
+    padding: 0 10px;
+	
+	.content-area {
+		.site-main {
+			word-wrap: break-word;
+		}
+	}
+	
+	.widget-area {
+		display: none;
+        padding: 0 0 0 10px;
+	}
+}
+.site-footer {
+	clear: both;
+	padding: 0 10px;
+}
+
+/** Breakpoint - 600 **/
+@media only screen and (min-width: 600px) {
+
+	.site {
+		@include wrap;
+	}
+}
+
+/** Breakpoint - 768 **/
+@media only screen and (min-width: 768px) {
+	.site {}
+	.site-header {
+        padding: 0;
+    }
+	.site-content {
+        padding: 0;
+        background: #fff; 
+        
+		.content-area {
+			//@include column(8); 
+			//@include first;
+			padding: 25px;   
+            
+            .site-main {
+                 
+            }
+            
+		}
+		
+		.widget-area {
+			//display: block;
+			//@include column(4); 
+			//@include last; 
+			list-style: none;
+			
+		}
+	}
+	.site-footer {
+		clear: both;
+        padding: 0;
+	}
+}
