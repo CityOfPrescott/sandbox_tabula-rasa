@@ -13,7 +13,8 @@ $multiple = count( $organizer_ids ) > 1;
 
 $phone = tribe_get_organizer_phone();
 $email = tribe_get_organizer_email();
-$website = tribe_get_organizer_website_link( null, '<i class="fa fa-link"></i>Event Website<i class="fa fa-external-link"></i>');
+$o_website = tribe_get_organizer_website_link( null, '<i class="fa fa-link"></i>Event Website<i class="fa fa-external-link"></i>');
+$e_website = tribe_get_event_website_link( null, '<i class="fa fa-link"></i>Event Website<i class="fa fa-external-link"></i>');
 ?>
 
 <div class="tribe-events-meta-group tribe-events-meta-group-organizer">
@@ -25,14 +26,16 @@ $website = tribe_get_organizer_website_link( null, '<i class="fa fa-link"></i>Ev
 		foreach ( $organizer_ids as $organizer ) {
 			if ( ! $organizer ) {
 				continue;
-			}
+
 
 			?>
 			<i class="fa fa-user"></i>
 			<dd class="fn org">
-				<?php echo tribe_get_organizer( $organizer ) ?>
+				<?php echo strip_tags(tribe_get_organizer( $organizer ) ) ?>
 			</dd>
 			<?php
+                
+            }
 		}
 
 		if ( ! $multiple ) { // only show organizer details if there is one
@@ -61,13 +64,19 @@ $website = tribe_get_organizer_website_link( null, '<i class="fa fa-link"></i>Ev
 			}//end if
 
 			// Event Website
-		if ( ! empty( $website ) ) { ?>
+            if ( !empty($e_website ) ) { ?>
+		
 
-			<dt> <?php //esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt>
-			<dd class="tribe-events-event-url"> <?php echo $website; ?> </dd>
-<?php
+                <dt> <?php //esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt>
+                <dd class="tribe-events-event-url"> <?php echo $e_website; ?> </dd>     
+
+        <?php
+            } elseif( ! empty( $o_website ) ) {  ?>
+                <dt> <?php //esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt>
+                <dd class="tribe-events-event-url"> <?php echo $o_website; ?> </dd>    
+        <?php
 			}
-			}
+        }
 /*
 		<?php if ( ! empty( $phone ) ): ?>
 			<dt> <?php esc_html_e( 'Phone:', 'the-events-calendar' ) ?> </dt>

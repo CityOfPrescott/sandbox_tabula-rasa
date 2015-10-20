@@ -12,7 +12,8 @@ $organizer_ids = tribe_get_organizer_ids();
 $multiple = count( $organizer_ids ) > 1;
 
 $phone = tribe_get_phone();
-$website = tribe_get_venue_website_link( null, '<i class="fa fa-link"></i>Event Website<i class="fa fa-external-link"></i>');
+$o_website = tribe_get_organizer_website_link( null, '<i class="fa fa-link"></i>Event Website<i class="fa fa-external-link"></i>');
+$e_website = tribe_get_event_website_link( null, '<i class="fa fa-link"></i>Event Website<i class="fa fa-external-link"></i>');
 ?>
 
 <div class="tribe-events-meta-group tribe-events-meta-group-organizer">
@@ -41,11 +42,17 @@ $website = tribe_get_venue_website_link( null, '<i class="fa fa-link"></i>Event 
 			}//end if
 
 			// Event Website
-		if ( ! empty( $website ) ) { ?>
+            if ( !empty($e_website ) ) { ?>
+		
 
-			<dt> <?php //esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt>
-			<dd class="tribe-events-event-url"> <?php echo $website; ?> </dd>
-<?php
+                <dt> <?php //esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt>
+                <dd class="tribe-events-event-url"> <?php echo $e_website; ?> </dd>     
+
+        <?php
+            } elseif( ! empty( $o_website ) ) {  ?>
+                <dt> <?php //esc_html_e( 'Website:', 'the-events-calendar' ) ?> </dt>
+                <dd class="tribe-events-event-url"> <?php echo $o_website; ?> </dd>    
+        <?php
 			}
 }
 		do_action( 'tribe_events_single_meta_organizer_section_end' );

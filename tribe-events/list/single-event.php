@@ -21,6 +21,7 @@ $has_venue_address = ( ! empty( $venue_details['address'] ) ) ? ' location' : ''
 // Organizer
 $organizer = tribe_get_organizer();
 
+$cat_slug = get_tourism_terms();
 ?>
 
 <div class="list-sections">
@@ -31,7 +32,7 @@ $organizer = tribe_get_organizer();
     <!-- Event Title -->
     <?php do_action( 'tribe_events_before_the_event_title' ) ?>
     <h2 class="tribe-events-list-event-title entry-title summary">
-        <a class="url" href="<?php echo esc_url( tribe_get_event_link() ); ?>" title="<?php the_title_attribute() ?>" rel="bookmark">
+        <a class="url <?php echo $cat_slug; ?>" href="<?php echo esc_url( tribe_get_event_link() ); ?>" title="<?php the_title_attribute() ?>" rel="bookmark">
             <?php the_title() ?>
         </a>
     </h2>
@@ -51,12 +52,12 @@ $organizer = tribe_get_organizer();
         $cats =  tribe_get_event_categories(
             get_the_id(), array(
                 'before'       => '',
-                'sep'          => '',
+                'sep'          => '<i class="fa fa-folder-open"></i>',
                 'after'        => '',
                 'label'        => '', // An appropriate plural/singular label will be provided
                 'label_before' => '',
                 'label_after'  => '',
-                'wrap_before'  => '<div class="tribe-events-list-categories"> | <i class="fa fa-folder-open"></i>',
+                'wrap_before'  => '<div class="tribe-events-list-categories ' . $cat_slug . '"> | <i class="fa fa-folder-open"></i>',
                 'wrap_after'   => '</div>',
             )
         );

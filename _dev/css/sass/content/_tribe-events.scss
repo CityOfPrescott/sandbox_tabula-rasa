@@ -24,7 +24,66 @@
     color: #111;
     
     .entry-header { display: none; }   
- 
+
+    .tribe-events-list-event-title {
+        font-weight: bold;
+        font-family: "Open Sans Condensed", Impact, "Arial Black", Arial, sans-serif; 
+        font-size: 26px;
+        color: #555;  
+        display: inline;
+
+        a {
+            color: #777;
+            &[class*="art"] { color: #272ae6; }
+            &[class*="educational"] { color: #5e1400; }
+            &[class*="entertainment"] { color: #000; }
+            &[class*="faith-and-worship"] { color: #60A; }
+            &[class*="performing-arts"] { color: #60A; }
+            &[class*="shopping-and-commerce"] { color: #2B0; }
+            &[class*="outdoor-recreation"] { color: #777; }                           
+            &[class*="trade-show"] { color: #777; }                           
+
+        }
+    }
+    
+    .tribe-events-event-categories{
+        a {
+            box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
+            margin: 1px 2px;
+            padding: 4px;
+            text-shadow: 0 1px 0 #fff;
+            text-transform: uppercase;
+            color:  #666;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 11px;
+
+            &:hover {
+                background-color: #e0efff;
+                border-color: #e0efff;
+                box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+                color: #000;
+            }
+            &:before {
+                font-family: FontAwesome;
+                content: "\f111";
+                padding-right: 5px;    
+                color: #777;
+            }
+            &[href*="/art/"]:before { color: #272ae6; }
+            &[href*="/educational"]:before { color: #5e1400; }
+            &[href*="/entertainment"]:before { color: #000; }
+            &[href*="faith-and-worship"]:before { color: #60A; }
+            &[href*="performing-arts"]:before { color: #60A; }
+            &[href*="shopping-and-commerce"]:before { color: #2B0; }
+            &[href*="outdoor-recreation"]:before { color: #777; }
+            &[href*="trade-show"]:before { color: #777; }
+        }
+    } 
+        .tribe-events-user-recurrence-toggle{ display: none; }    
+    .datepicker {
+        width: 20%;
+    }
     .tribe-events-page-title {
         float: left;
     }        
@@ -155,6 +214,7 @@
             font-size: 14px;
         }
         dl {
+            /*
             a {
                 box-shadow: inset 0 0 1px rgba(0,0,0,0.5);
                 margin: 1px 2px;
@@ -173,6 +233,7 @@
                     color: #000;
                 }
             }
+            */
         }
     }
     .tribe-events-cal-links {
@@ -221,7 +282,11 @@
             @include first;
             
             .tribe-bar-views-select {
-                padding: 5px 50px;
+                font-size: 1.6rem;
+                padding: 0;
+                margin: 0;
+                margin-top: 5%;
+                border: none;
             }
             .tribe-bar-views-list { display: none; }
         }
@@ -242,16 +307,43 @@
                 @include last;         
                 
                 .tribe-events-button {
-                    //@include button;
-                    margin-top: 11%;
+                    @include button;
+                    margin-top: 17%;
                     padding-top: 0;
                     padding-bottom: 0;
+                    font-size: 15px;
+                    width: 100%;
                 }
             }
         }
-    
+        select {
+            background-color: inherit;
+        }
+        input {
+            background-color: inherit;
+            border: none;
+            border-bottom: 1px dashed #999;        
+        }
     }
     
+    /*****************************************
+    TRIBE DAY
+    ******************************************/ 
+    .tribe-events-day {
+        .tribe-events-event-image {
+            float: left;
+            display: inline;
+            padding-right: 0 10px 10px 0;
+        }
+        .tribe-events-event-meta {
+            clear: none;
+            float: none!important;
+        }
+        .tribe-events-list-event-description {
+            clear: none;
+            display: inline;
+        }
+    }
     /*****************************************
     TRIBE MONTHLY GRID
     ******************************************/    
@@ -313,18 +405,44 @@
             font-size: 16px;
             margin: 5px 0 ;
         }
-        .location {
+        .author {
             float: left;
             .time-details {
                 margin-bottom: 0;
             }
         }
         .tribe-events-list-categories {
-            
+                  color: #777;
+                &[class*="art"] { color: #272ae6!important; 
+                    a { color: #272ae6!important; }
+                }
+                &[class*="educational"] { color: #5e1400!important; 
+                    a { color: #5e1400!important; }
+                }
+                &[class*="entertainment"] { color: #000!important; 
+                    a { color: #000!important; }
+                }
+                &[class*="faith-and-worship"] { color: #60A!important; 
+                    a { color: #60A!important; }
+                }
+                &[class*="performing-arts"] { color: #60A!important; 
+                    a { color: #60A!important; }
+                }
+                &[class*="shopping-and-commerce"] { color: #2B0!important; 
+                    a { color: #2B0!important; }
+                }
+                &[class*="outdoor-recreation"] { color: #777!important; 
+                    a { color: #777!important; }
+                }                         
+                &[class*="trade-show"] { color: #777!important; 
+                    a { color: #777!important; } 
+                }             
+            a {
+                //font-weight: bold;
+            }            
         }
         .tribe-events-list-event-description {
-            //@include column(10);
-            //@include last;
+ 
             clear: both;
             p {
                 font-size: 14px;
@@ -343,5 +461,89 @@
                 color: #fff;
             }
         }
+    }
+    /*****************************************
+    TRIBE PHOTO SECTION
+    ******************************************/      
+    .tribe-events-photo {
+
+        #tribe-events-photo-events {
+
+            .tribe-events-photo-event-wrap {
+                background: #fff9f0;
+                border: 1px solid #fff9f0;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+                padding: 10px;
+
+                .calendar-icon {
+                    float: right;
+                    width:  50px;
+                    text-align: center;
+                    color: #fff;
+                    text-transform: uppercase;
+                    margin-left: 10px;                    
+                    
+                    .month {                       
+                        display: block;
+                        background: lighten( #777, 20% );
+                        
+                        &[class*="art"] { background: lighten( #272ae6, 20% ); }
+                        &[class*="educational"] { background: lighten( #5e1400, 20% ); }
+                        &[class*="entertainment"] { background: lighten( #000, 20% ); }
+                        &[class*="faith-and-worship"] { background: lighten( #60A, 20% ); }
+                        &[class*="performing-arts"] { background: lighten( #60A, 20% ); }
+                        &[class*="shopping-and-commerce"] { background: lighten( #2B0, 20% ); }
+                        &[class*="outdoor-recreation"] { background: lighten( #777, 20% ); }   
+                        &[class*="trade-show"] { background: lighten( #777, 20% ); }   
+                    }
+                    .date { 
+                        display: block;
+                        font-weight: bold;
+                        font-size: 20px;
+                        background: #777;
+                        
+                        &[class*="art"] { background: #272ae6; }
+                        &[class*="educational"] { background: #5e1400; }
+                        &[class*="entertainment"] { background: #000; }
+                        &[class*="faith-and-worship"] { background: #60A; }
+                        &[class*="performing-arts"] { background: #60A; }
+                        &[class*="shopping-and-commerce"] { background: #2B0; }
+                        &[class*="outdoor-recreation"] { background: #777; }                         
+                        &[class*="trade-show"] { background: #777; }                         
+                    }
+                }
+                .tribe-events-event-meta { 
+                    display: inline;
+                }
+                .tribe-events-event-image {
+                    background-color: #fff;
+                    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+                    padding: 5px;
+                }
+                .tribe-events-content {
+                    padding-top: 10px;
+                    text-align: justify;
+                }
+            } 
+            .tribe-events-event-categories-wrap {
+                background: #f6f1ea;
+                border-top: 1px solid #ede3d5;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+                padding: 10px;
+                
+                dd {
+                    margin: 0;
+                }           
+            }
+        }
+    }
+    
+    /*****************************************
+    VENUE SECTION
+    ******************************************/ 
+    .tribe-events-venue {
+        .tel { display: block;}
+        .url { display: block;}
+        
     }
 }

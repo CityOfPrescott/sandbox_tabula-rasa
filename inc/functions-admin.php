@@ -5,17 +5,17 @@ ADMIN MENU
 
 function remove_admin_menus () {
 	if (!current_user_can('manage_options')){ // Only proceed if user does not have admin role.
-		//remove_menu_page('index.php'); 				// Dashboard
-		//remove_menu_page('edit.php'); 				// Posts
-		//remove_menu_page('upload.php'); 			// Media
-		//remove_menu_page('link-manager.php'); 			// Links
-		//remove_menu_page('edit.php?post_type=page'); 		// Pages
-		//remove_menu_page('edit-comments.php'); 			// Comments
-		//remove_menu_page('themes.php'); 			// Appearance
-		//remove_menu_page('plugins.php'); 			// Plugins
-		//remove_menu_page('users.php'); 				// Users
-		//remove_menu_page('tools.php'); 				// Tools
-		//remove_menu_page('options-general.php'); 		// Settings
+		remove_menu_page('index.php'); 				// Dashboard
+		remove_menu_page('edit.php'); 				// Posts
+		remove_menu_page('upload.php'); 			// Media
+		remove_menu_page('link-manager.php'); 			// Links
+		remove_menu_page('edit.php?post_type=page'); 		// Pages
+		remove_menu_page('edit-comments.php'); 			// Comments
+		remove_menu_page('themes.php'); 			// Appearance
+		remove_menu_page('plugins.php'); 			// Plugins
+		remove_menu_page('users.php'); 				// Users
+		remove_menu_page('tools.php'); 				// Tools
+		remove_menu_page('options-general.php'); 		// Settings
  
 		//remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=post_tag' );	// Remove posts->tags submenu
 		//remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );	// Remove posts->categories submenu
@@ -171,6 +171,9 @@ function disable_default_dashboard_widgets() {
 	//remove_meta_box('yoast_db_widget', 'dashboard', 'normal');         // Yoast's SEO Plugin Widget
 	//Remove sections that should only be displayed to admin
 
+    
+    remove_meta_box('authordiv', 'tribe_events', 'normal'); // Author
+    
 	add_action('add_meta_boxes', 'yoast_is_toast', 99);
 	function yoast_is_toast(){
 		if (!current_user_can('manage_options')){	
@@ -183,9 +186,26 @@ function disable_default_dashboard_widgets() {
 	}
 	if (!current_user_can('manage_options')){	
 		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); // Simple History Module
+		remove_meta_box('postexcerpt', 'tribe_events', 'normal'); // Excerpt
+		remove_meta_box('postcustom', 'tribe_events', 'normal'); // Custom Fields
+		remove_meta_box('commentstatusdiv', 'tribe_events', 'normal'); // Discussion
+		remove_meta_box('commentsdiv', 'tribe_events', 'normal'); // Comments
+		remove_meta_box('tribe_events_event_options', 'tribe_events', 'side'); // Event Options
+		remove_meta_box('tagsdiv-post_tag', 'tribe_events', 'side'); // Tags
 	}	
 }
 add_action('admin_menu', 'disable_default_dashboard_widgets');
+
+function author_in_publish() {
+
+    global $post_ID;
+
+    $post = get_post( $post_ID );
+    echo '<div class="misc-pub-section">Author: ';
+    post_author_meta_box( $post );
+    echo '</div>';
+}
+add_action( 'post_submitbox_misc_actions', 'author_in_publish' );
 
 // RSS Dashboard Widget
 function rss_dashboard_widget() {
@@ -249,13 +269,19 @@ function only_admins_login_area( $redirect_to, $request, $user ) {
 			// Redirect to default admin area
 			return $redirect_to;
 		}
+		if ( in_array( 'editor', $user->roles ) ) {
+			// Redirect to default admin area
+            $redirect_to = admin_url('edit.php?post_type=tribe_events');
+			return $redirect_to;
+		}        
 	}
 	return home_url();
 }
-//add_filter( 'login_redirect', 'only_admins_login_area', 10, 3 );
+add_filter( 'login_redirect', 'only_admins_login_area', 10, 3 );
 
 // Remove Access to wp-admin from certain roles
 function redirect_user_on_role() {
+    /*
 	global $current_user;
 	get_currentuserinfo();
 
@@ -273,6 +299,11 @@ function redirect_user_on_role() {
 	if ($current_user->user_level > 8) {
 		wp_redirect( home_url() ); exit;
 	}
+    */
+    if ( current_user_can('editor') ) {
+        wp_redirect(admin_url('edit.php?post_type=tribe_events'));
+    }
+    
 }
 //add_action('admin_init', 'redirect_user_on_role');
 
@@ -286,12 +317,12 @@ function load_custom_wp_admin_style() {
 	wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/css/admin.css', false, '1.0.0' );
 	wp_enqueue_style( 'custom_wp_admin_css' );
 }
-add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
+//add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
 function cd_add_editor_styles() {
 	add_editor_style( get_stylesheet_directory_uri() . '/css/style.css' );
 }
-add_action( 'init', 'cd_add_editor_styles' );
+//add_action( 'init', 'cd_add_editor_styles' );
 
 /**  Custom Backend Footer
 **************************************************************/

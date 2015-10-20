@@ -135,8 +135,12 @@ add_filter('excerpt_more', 'tr_excerpt_more');
 function tr_excerpt_length( $length ) {
 	if ( tribe_is_past() || tribe_is_upcoming() && !is_tax() ) {
 		return 20;	
+	} elseif( tribe_is_day() && !is_tax() ) {
+		return 20;
+	} elseif(  tribe_is_photo() && !is_tax() ) {
+		return 50;
 	} else {
-		return 55;
+		return 20;
 	}
 }
 add_filter( 'excerpt_length', 'tr_excerpt_length', 999 );
@@ -146,6 +150,7 @@ POST THUMBNAILS
 **************************************************************/
 //add_image_size( $name, $width, $height, $crop );
 add_image_size( 'list-thumb', 90, 90, true );
+add_image_size( 'photo-thumb', 300, 150, true );
 
 /*************************************************************
 MISC
