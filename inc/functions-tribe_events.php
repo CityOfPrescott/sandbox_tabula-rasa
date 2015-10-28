@@ -166,8 +166,26 @@ function add_custom_cron_intervals( $schedules ) {
 }
 
 function get_cop_events_schedule() {
-	if ( !wp_next_scheduled( 'get_cop_events_minutese' ) ) {
+	if ( !wp_next_scheduled( 'get_cop_events_hourly' ) ) {
 		wp_schedule_event(time(), 'hourly', 'get_cop_events_hourly');
 	}
+}
+
+/*-----------------------------------------------------------------------------------*/
+/* Add Published Date Column to Tribe Events
+/*-----------------------------------------------------------------------------------*/
+add_filter( 'manage_edit-tribe_events_columns', 'my_edit_tribe_events' ) ;
+
+function my_edit_tribe_events( $columns ) {
+    unset(
+        $columns['tags'],
+        $columns['comments']
+    );
+	$new_columns = array(
+		'date' => __('Date Published'),
+	);
+    return array_merge($columns, $new_columns);    
+
+  return $columns;
 }
 ?>
